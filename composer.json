@@ -14,23 +14,19 @@
   ],
   "autoload": {
     "psr-4": {
-      "FOS\\RestBundle\\": ""
-    },
-    "exclude-from-classmap": [
-      "Resources/",
-      "Tests/"
-    ]
+      "ArtekSoft\\ValidatorBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ArtekSoft\\ValidatorBundle\\Tests\\": "tests/"
+    }
   },
   "require": {
-    "php": "^7.2|^8.0",
-    "symfony/framework-bundle": "6.1.*"
+    "php": "^8.0",
+    "symfony/framework-bundle": "6.1.*",
+    "webmozart/assert": "^1.11",
+    "thecodingmachine/safe": "^2.3"
   },
-  "require-dev": {
-  },
-  "minimum-stability": "dev",
-  "extra": {
-    "branch-alias": {
-      "3.x-dev": "3.1-dev"
-    }
-  }
+  "minimum-stability": "dev"
 }
