@@ -1,17 +1,27 @@
 {
   "name": "arteksoft/validator-bundle",
   "type": "symfony-bundle",
-  "description": "This Bundle provides various tools to normalize and validate data and variables",
+  "description": "This Bundle provides various tools to normalize or validate data and variables for Symfony",
+  "license": "MIT",
   "keywords": [
     "validator"
   ],
-  "license": "MIT",
   "authors": [
     {
       "name": "Hernán Bozán",
       "email": "hernan.bozan@gmail.com"
     }
   ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.1",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "symfony/framework-bundle": "6.1.*",
+    "webmozart/assert": "^1.11",
+    "thecodingmachine/safe": "^2.3"
+  },
   "autoload": {
     "psr-4": {
       "ArtekSoft\\ValidatorBundle\\": "src/"
@@ -22,11 +32,22 @@
       "ArtekSoft\\ValidatorBundle\\Tests\\": "tests/"
     }
   },
-  "require": {
-    "php": "^8.0",
-    "symfony/framework-bundle": "6.1.*",
-    "webmozart/assert": "^1.11",
-    "thecodingmachine/safe": "^2.3"
+  "replace": {
+    "symfony/polyfill-ctype": "*",
+    "symfony/polyfill-iconv": "*",
+    "symfony/polyfill-php72": "*",
+    "symfony/polyfill-php73": "*",
+    "symfony/polyfill-php74": "*",
+    "symfony/polyfill-php80": "*",
+    "symfony/polyfill-php81": "*"
   },
-  "minimum-stability": "dev"
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "6.1.*"
+    }
+  }
 }
