@@ -10,9 +10,14 @@ use PHPUnit\Framework\TestCase;
 final class BasicValidatorTest extends TestCase
 {
     /**
+     * @param mixed $testVariable
+     * @param bool  $testExpectedResult
+     *
+     * @return void
+     *
      * @dataProvider checkIsArrayTestProvider
      */
-    public function testCheckIsArray($testVariable, bool $testExpectedResult): void
+    public function testCheckIsArray(mixed $testVariable, bool $testExpectedResult): void
     {
         $result = BasicValidator::checkIsArray($testVariable);
         $this->assertSame($testExpectedResult, $result);
@@ -31,10 +36,10 @@ final class BasicValidatorTest extends TestCase
     {
         $data = $this->generalDataForTest();
 
-        $data['array_empty']['test_expected_result']  = TRUE;
-        $data['array_null']['test_expected_result']   = TRUE;
-        $data['array_string']['test_expected_result'] = TRUE;
-        $data['array_int']['test_expected_result']    = TRUE;
+        $data['array_empty']['test_expected_result']                     = TRUE;
+        $data['array_null']['test_expected_result']                      = TRUE;
+        $data['array_string']['test_expected_result']                    = TRUE;
+        $data['array_int']['test_expected_result']                       = TRUE;
         $data['array_associative_null_string']['test_expected_result']   = TRUE;
         $data['array_associative_string_null']['test_expected_result']   = TRUE;
         $data['array_associative_int_null']['test_expected_result']      = TRUE;
@@ -56,7 +61,7 @@ final class BasicValidatorTest extends TestCase
     private function generalDataForTest(): array
     {
         return [
-            // Numeric Values
+            // Numeric Values.
             'int_normal'                      => ['test_variable' => 1, 'test_expected_result' => FALSE],
             'int_zero'                        => ['test_variable' => 0, 'test_expected_result' => FALSE],
             'int_negative'                    => ['test_variable' => -1, 'test_expected_result' => FALSE],
@@ -64,7 +69,7 @@ final class BasicValidatorTest extends TestCase
             'string_int_zero'                 => ['test_variable' => '0', 'test_expected_result' => FALSE],
             'string_int_negative'             => ['test_variable' => '-1', 'test_expected_result' => FALSE],
 
-            // Float Values (Chilean System)
+            // Float Values (Chilean System).
             'float_zero'                      => ['test_variable' => 0.0, 'test_expected_result' => FALSE],
             'float_positive'                  => ['test_variable' => 1.1, 'test_expected_result' => FALSE],
             'float_negative'                  => ['test_variable' => -1.1, 'test_expected_result' => FALSE],
@@ -72,15 +77,15 @@ final class BasicValidatorTest extends TestCase
             'string_float_positive'           => ['test_variable' => '1.1', 'test_expected_result' => FALSE],
             'string_float_negative'           => ['test_variable' => '-1.1', 'test_expected_result' => FALSE],
 
-            // Boolean
+            // Boolean.
             'boolean_true'                    => ['test_variable' => TRUE, 'test_expected_result' => FALSE],
             'boolean_false'                   => ['test_variable' => FALSE, 'test_expected_result' => FALSE],
 
-            // Strings
+            // Strings.
             'string_empty'                    => ['test_variable' => '', 'test_expected_result' => FALSE],
             'string'                          => ['test_variable' => 'hi, im string', 'test_expected_result' => FALSE],
 
-            // Array
+            // Array.
             'array_empty'                     => ['test_variable' => [], 'test_expected_result' => FALSE],
             'array_null'                      => ['test_variable' => [NULL], 'test_expected_result' => FALSE],
             'array_string'                    => ['test_variable' => ['a'], 'test_expected_result' => FALSE],
@@ -95,7 +100,7 @@ final class BasicValidatorTest extends TestCase
             'array_associative_int_string'    => ['test_variable' => [1 => 'a'], 'test_expected_result' => FALSE],
             'array_associative_int_int'       => ['test_variable' => [1 => 1], 'test_expected_result' => FALSE],
 
-            // Null Values
+            // Null Values.
             'null_value'                      => ['test_variable' => NULL, 'test_expected_result' => FALSE],
         ];
     }

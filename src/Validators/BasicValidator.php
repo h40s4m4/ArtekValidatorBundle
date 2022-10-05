@@ -10,6 +10,7 @@ use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException as WebmozartException;
 
 use function Safe\json_encode as safe_json_encode;
+use function sprintf;
 
 final class BasicValidator
 {
@@ -59,7 +60,10 @@ final class BasicValidator
     {
         $isString = TRUE;
         try {
-            Assert::stringNotEmpty($value, sprintf('El campo [%s] se encuentra vacío o no es un string válido', safe_json_encode($value)));
+            Assert::stringNotEmpty(
+                $value,
+                sprintf('El campo [%s] se encuentra vacío o no es un string válido', safe_json_encode($value)),
+            );
         } catch (WebmozartException | SafeJsonException $e) {
             if (TRUE === $hardException) {
                 throw new InvalidArgumentException($e->getMessage());
@@ -84,11 +88,14 @@ final class BasicValidator
      *
      * @throws InvalidArgumentException En caso que $value no sea un INT válido o esté VACÍO y que la bandera $hardException = true.
      */
-    public static function checkIsIntNonEmpty($value, bool $hardException = FALSE): bool
+    public static function checkIsIntNonEmpty(mixed $value, bool $hardException = FALSE): bool
     {
         $isInt = TRUE;
         try {
-            Assert::integer($value, sprintf('El campo [%s] se encuentra vacío o no es un INT válido', safe_json_encode($value)));
+            Assert::integer(
+                $value,
+                sprintf('El campo [%s] se encuentra vacío o no es un INT válido', safe_json_encode($value)),
+            );
         } catch (WebmozartException | SafeJsonException $e) {
             if (TRUE === $hardException) {
                 throw new InvalidArgumentException($e->getMessage());
@@ -117,7 +124,10 @@ final class BasicValidator
     {
         $isFloat = TRUE;
         try {
-            Assert::float($value, sprintf('El campo [%s] se encuentra vacío o no es un FLOAT válido', safe_json_encode($value)));
+            Assert::float(
+                $value,
+                sprintf('El campo [%s] se encuentra vacío o no es un FLOAT válido', safe_json_encode($value)),
+            );
         } catch (WebmozartException | SafeJsonException $e) {
             if (TRUE === $hardException) {
                 throw new InvalidArgumentException($e->getMessage());

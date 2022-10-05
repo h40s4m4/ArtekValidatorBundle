@@ -32,7 +32,7 @@ final class SymfonyRequestValidator
             return $request->request->get($key);
         }
 
-        if ($hardException === TRUE) {
+        if (TRUE === $hardException) {
             throw new InvalidArgumentException(
                 sprintf('El campo [%s] no se encuentra definido dentro del Request', $key),
             );

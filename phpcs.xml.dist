@@ -46,9 +46,13 @@
         <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion.DisallowedConstructorPropertyPromotion"/> <!-- No permite autopromoción en constructor -->
         <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces.IncorrectEmptyLinesBeforeClosingBrace"/> <!-- Línea al final de la clase -->
         <exclude name="SlevomatCodingStandard.Commenting.RequireOneLineDocComment.MultiLineDocComment"/> <!-- Obligación para comentarios con comentario -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison.DisallowedYodaComparison"/> <!-- Permite comparacion YODA -->
         <exclude name="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses.UselessParentheses"/> <!-- Paréntesis opcional para NEW -->
+        <exclude name="SlevomatCodingStandard.Files.FunctionLength.FunctionLength"/> <!-- Largo de función -->
+        <exclude name="SlevomatCodingStandard.Files.LineLength.LineTooLong"/> <!-- Largo de la clase -->
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName"/> <!-- filepath debe ser el mismo que el namespace -->
         <exclude name="SlevomatCodingStandard.Functions.DisallowNamedArguments.DisallowedNamedArgument"/> <!-- No permite argumentos con nombre -->
+        <exclude name="SlevomatCodingStandard.Functions.FunctionLength.FunctionLength"/> <!-- Largo de la función -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation.NonFullyQualifiedClassName"/> <!-- Usa nombre full -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation.NonFullyQualifiedClassName"/> <!-- Usa nombre full -->
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions.NonFullyQualifiedException"/> <!-- Usa nombre full -->
@@ -56,6 +60,8 @@
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions.NonFullyQualified"/> <!-- Usa nombre full -->
         <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- Usa nombre full -->
         <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- Obliga a usar fqn para llamar en clase y no usar USE -->
+        <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint"/> <!-- Permite usar mixed types -->
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification"/> <!-- Especificación del array -->
         <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/> <!-- obliga a params que tengan texto -->
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification"/> <!-- Tagear propiedades con @var -->
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.UselessAnnotation"/> <!-- obliga a que los @var tengan texto -->
@@ -67,9 +73,12 @@
     <rule ref="Generic">
         <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/> <!-- Sintaxis corta de array -->
         <exclude name="Generic.Classes.OpeningBraceSameLine.BraceOnNewLine"/> <!-- Lugar donde poner { en las clases-->
+        <exclude name="Generic.ControlStructures.DisallowYodaConditions.Found"/> <!-- Permite la comparación YODA -->
         <exclude name="Generic.Commenting.DocComment.MissingShort"/> <!-- Falta una breve descripción en el comentario -->
         <exclude name="Generic.Files.EndFileNewline.NotFound"/> <!-- Línea al final de la clase -->
+        <exclude name="Generic.Files.LineLength.TooLong"/> <!-- Largo de la clase -->
         <exclude name="Generic.Files.LowercasedFilename.NotFound"/> <!-- Nombre de archivo con minúsculas -->
+        <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame"/> <!-- Aliniación -->
         <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine"/> <!-- Lugar donde poner { -->
         <exclude name="Generic.PHP.ClosingPHPTag.NotFound"/> <!-- incluir etiqueta <?php final -->
         <exclude name="Generic.PHP.LowerCaseConstant.Found"/> <!-- TRUE, FALSE y NULL debe ser con mayúsculas -->
