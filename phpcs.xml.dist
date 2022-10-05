@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <arg name="basepath" value="."/>
+    <arg name="cache" value=".phpcs-cache"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <!-- Reglas -->
+    <rule ref="Doctrine" />
+    <rule ref="PSR1" />
+    <rule ref="PSR2" />
+    <rule ref="PSR12" />
+
+    <!-- Archivos por revisar -->
+    <file>src/</file>
+    <file>tests/</file>
+
+    <!-- Archivos excluidos -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <rule ref="PEAR">
+        <exclude name="PEAR.Commenting.ClassComment.Missing"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingLinkTag"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingPackageTag"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.FileComment.Missing"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.FunctionComment.Missing"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.FunctionComment.MissingParamComment"/> <!-- Comentarios adicionales -->
+        <exclude name="PEAR.Commenting.InlineComment.WrongStyle"/> <!-- No permite los comentarios tipo Perl (#) -->
+        <exclude name="PEAR.Functions.FunctionDeclaration.NewlineBeforeOpenBrace"/>
+        <exclude name="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/> <!-- Funciones privadas deben tener _ -->
+        <exclude name="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/> <!-- Variables privadas deben tener _ -->
+        <exclude name="PEAR.WhiteSpace.ScopeIndent.Incorrect"/> <!-- Identación -->
+    </rule>
+
+    <rule ref="PSR2">
+        <exclude name="PSR2.Files.EndFileNewline.NoneFound"/> <!-- Línea al final de la clase -->
+    </rule>
+
+    <rule ref="SlevomatCodingStandard">
+        <exclude name="SlevomatCodingStandard.Classes.ClassStructure.IncorrectGroupOrder"/> <!-- Orden de los métodos internos de la clase -->
+        <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion.DisallowedConstructorPropertyPromotion"/> <!-- No permite autopromoción en constructor -->
+        <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces.IncorrectEmptyLinesBeforeClosingBrace"/> <!-- Línea al final de la clase -->
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLineDocComment.MultiLineDocComment"/> <!-- Obligación para comentarios con comentario -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses.UselessParentheses"/> <!-- Paréntesis opcional para NEW -->
+        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName"/> <!-- filepath debe ser el mismo que el namespace -->
+        <exclude name="SlevomatCodingStandard.Functions.DisallowNamedArguments.DisallowedNamedArgument"/> <!-- No permite argumentos con nombre -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation.NonFullyQualifiedClassName"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation.NonFullyQualifiedClassName"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions.NonFullyQualifiedException"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalConstants.NonFullyQualified"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions.NonFullyQualified"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- Usa nombre full -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- Obliga a usar fqn para llamar en clase y no usar USE -->
+        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation"/> <!-- obliga a params que tengan texto -->
+        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification"/> <!-- Tagear propiedades con @var -->
+        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.UselessAnnotation"/> <!-- obliga a que los @var tengan texto -->
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation"/> <!-- Anotaciones sin comentario -->
+        <exclude name="SlevomatCodingStandard.Whitespaces.DuplicateSpaces.DuplicateSpaces"/> <!-- Alineamiento de los espacios en comentarios -->
+
+    </rule>
+
+    <rule ref="Generic">
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/> <!-- Sintaxis corta de array -->
+        <exclude name="Generic.Classes.OpeningBraceSameLine.BraceOnNewLine"/> <!-- Lugar donde poner { en las clases-->
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/> <!-- Falta una breve descripción en el comentario -->
+        <exclude name="Generic.Files.EndFileNewline.NotFound"/> <!-- Línea al final de la clase -->
+        <exclude name="Generic.Files.LowercasedFilename.NotFound"/> <!-- Nombre de archivo con minúsculas -->
+        <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine"/> <!-- Lugar donde poner { -->
+        <exclude name="Generic.PHP.ClosingPHPTag.NotFound"/> <!-- incluir etiqueta <?php final -->
+        <exclude name="Generic.PHP.LowerCaseConstant.Found"/> <!-- TRUE, FALSE y NULL debe ser con mayúsculas -->
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed"/> <!-- Se deben usar tabulaciones para sangría de líneas; no se permiten espacios -->
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed"/> <!-- Se deben usar espacios para sangría de líneas; no se permiten tabulaciones -->
+    </rule>
+
+    <rule ref="Squiz">
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration.CaseIndent"/> <!-- tabs para switch-case -->
+        <exclude name="Squiz.Commenting.BlockComment.LineIndent"/> <!-- Identacion de comentarios -->
+        <exclude name="Squiz.Commenting.BlockComment.FirstLineIndent"/> <!-- Identacion de comentarios -->
+        <exclude name="Squiz.Commenting.ClassComment.Missing"/> <!-- Comentarios de clase -->
+        <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineBefore"/> <!-- Se requiere una línea vacía después del comentario del bloque -->
+        <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter"/> <!-- Se requiere una línea vacía antes del comentario del bloque -->
+        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/> <!-- @method tag no está permitido -->
+        <exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing"/> <!-- Comentarios al final de una función -->
+        <exclude name="Squiz.Commenting.FileComment.Missing"/> <!-- Comentarios de archivo -->
+        <exclude name="Squiz.Commenting.FunctionCommentThrowTag.WrongNumber"/> <!-- Múltiples trows tags -->
+        <exclude name="Squiz.Commenting.InlineComment.NoSpaceBefore"/> <!-- Espacios antes del comentario inline -->
+        <exclude name="Squiz.Commenting.InlineComment.SpacingBefore"/> <!-- Identacion de comentarios -->
+        <exclude name="Squiz.Commenting.InlineComment.WrongStyle"/> <!-- No permite los comentarios tipo Perl (#) -->
+        <exclude name="Squiz.Commenting.VariableComment.Missing"/> <!-- Comentarios a variables de clase -->
+        <exclude name="Squiz.Commenting.VariableComment.TagNotAllowed"/> <!-- La etiqueta no está permitida en el comentario de la variable tal como @ORM -->
+        <exclude name="Squiz.Commenting.VariableComment.VarOrder"/> <!-- La etiqueta no está permitida en el comentario de la variable tal como @ORM -->
+        <exclude name="Squiz.Commenting.VariableComment.WrongStyle"/> <!-- Ignora nuevos comentarios php 8.1 -->
+        <exclude name="Squiz.Files.FileExtension.ClassFound"/> <!-- Pide que el archivo sea .inc -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/> <!-- Alineaciones entre cierre y apertura de funciones -->
+        <exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose"/> <!-- Espacios en blanco luego de la definición de la función -->
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/> <!-- No permite user trues implícitos -->
+        <exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison"/> <!-- No permite asignaciones de operadores ternarios -->
+        <exclude name="Squiz.WhiteSpace.MemberVarSpacing.FirstIncorrect"/> <!-- Espacio al inicio de la clase -->
+        <exclude name="Squiz.WhiteSpace.MemberVarSpacing.Incorrect"/> <!-- Espacios entre declaraciones de variables de clase -->
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/> <!-- Operadores de negación prohibidos -->
+    </rule>
+
+
+</ruleset>
