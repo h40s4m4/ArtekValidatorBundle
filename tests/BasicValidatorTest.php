@@ -15,11 +15,53 @@ final class BasicValidatorTest extends TestCase
      *
      * @return void
      *
-     * @dataProvider checkIsArrayTestProvider
+     * @dataProvider checkIsArrayProvider
      */
     public function testCheckIsArray(mixed $testVariable, bool $testExpectedResult): void
     {
         $result = BasicValidator::checkIsArray($testVariable);
+        $this->assertSame($testExpectedResult, $result);
+    }
+
+    /**
+     * @param mixed $testVariable
+     * @param bool  $testExpectedResult
+     *
+     * @return void
+     *
+     * @dataProvider checkIsStringProvider
+     */
+    public function testCheckIsStringNonEmpty(mixed $testVariable, bool $testExpectedResult): void
+    {
+        $result = BasicValidator::checkIsStringNonEmpty($testVariable);
+        $this->assertSame($testExpectedResult, $result);
+    }
+
+    /**
+     * @param mixed $testVariable
+     * @param bool  $testExpectedResult
+     *
+     * @return void
+     *
+     * @dataProvider checkIsIntProvider
+     */
+    public function testCheckIsIntNonEmpty(mixed $testVariable, bool $testExpectedResult): void
+    {
+        $result = BasicValidator::checkIsIntNonEmpty($testVariable);
+        $this->assertSame($testExpectedResult, $result);
+    }
+
+    /**
+     * @param mixed $testVariable
+     * @param bool  $testExpectedResult
+     *
+     * @return void
+     *
+     * @dataProvider checkIsFloatProvider
+     */
+    public function testCheckIsFloatNonEmpty(mixed $testVariable, bool $testExpectedResult): void
+    {
+        $result = BasicValidator::checkIsFloatNonEmpty($testVariable);
         $this->assertSame($testExpectedResult, $result);
     }
 
@@ -32,7 +74,7 @@ final class BasicValidatorTest extends TestCase
      *
      * @return array
      */
-    public function checkIsArrayTestProvider(): array
+    public function checkIsArrayProvider(): array
     {
         $data = $this->generalDataForTest();
 
@@ -49,6 +91,58 @@ final class BasicValidatorTest extends TestCase
         $data['array_associative_string_int']['test_expected_result']    = TRUE;
         $data['array_associative_int_string']['test_expected_result']    = TRUE;
         $data['array_associative_int_int']['test_expected_result']       = TRUE;
+
+        return $data;
+    }
+
+    /**
+     * Data for string test, all strings are valid, others things aren't valid.
+     *
+     * @return array
+     */
+    public function checkIsStringProvider(): array
+    {
+        $data = $this->generalDataForTest();
+
+        $data['string_int_normal']['test_expected_result']     = TRUE;
+        $data['string_int_zero']['test_expected_result']       = TRUE;
+        $data['string_int_negative']['test_expected_result']   = TRUE;
+        $data['string_float_zero']['test_expected_result']     = TRUE;
+        $data['string_float_positive']['test_expected_result'] = TRUE;
+        $data['string_float_negative']['test_expected_result'] = TRUE;
+        $data['string']['test_expected_result']                = TRUE;
+
+        return $data;
+    }
+
+    /**
+     * Data for int test, all int are valid (but not float), others things aren't valid.
+     *
+     * @return array
+     */
+    public function checkIsIntProvider(): array
+    {
+        $data = $this->generalDataForTest();
+
+        $data['int_normal']['test_expected_result']   = TRUE;
+        $data['int_zero']['test_expected_result']     = TRUE;
+        $data['int_negative']['test_expected_result'] = TRUE;
+
+        return $data;
+    }
+
+    /**
+     * Data for float test, all int are valid (but not float), others things aren't valid.
+     *
+     * @return array
+     */
+    public function checkIsFloatProvider(): array
+    {
+        $data = $this->generalDataForTest();
+
+        $data['float_zero']['test_expected_result']     = TRUE;
+        $data['float_positive']['test_expected_result'] = TRUE;
+        $data['float_negative']['test_expected_result'] = TRUE;
 
         return $data;
     }

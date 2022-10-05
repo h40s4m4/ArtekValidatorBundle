@@ -44,17 +44,17 @@ final class BasicValidator
     }
 
     /**
-     * Verifica si el valor entregado es un STRING válido y no VACÍO. El campo $value soporta cualquier tipo de valor.
+     * Checks if the delivered value is a STRING and is not EMPTY. The $value field supports any value type.
      *
-     * SI es un STRING válido, retorna TRUE.
-     * NO es un STRING válido o está VACÍO, retorna FALSE.
+     * IF it is a valid STRING, it returns TRUE.
+     * It is NOT a valid STRING or is EMPTY, it returns FALSE.
      *
      * @param mixed|null $value
      * @param bool       $hardException
      *
      * @return bool
      *
-     * @throws InvalidArgumentException En caso que $value no sea un STRING válido o esté VACÍO y que la bandera $hardException = true.
+     * @throws InvalidArgumentException In case $value is not a valid STRING or is NOT EMPTY and the flag $hardException = true.
      */
     public static function checkIsStringNonEmpty(mixed $value, bool $hardException = FALSE): bool
     {
@@ -76,17 +76,17 @@ final class BasicValidator
     }
 
     /**
-     * Verifica si el valor entregado es un INT válido y no VACÍO. El campo $value soporta cualquier tipo de valor.
+     * Checks if the delivered value is a INT and is not EMPTY. The $value field supports any value type.
      *
-     * SI es un INT válido, retorna TRUE.
-     * NO es un INT válido o está VACÍO, retorna FALSE.
+     * IF it is a valid INT, it returns TRUE.
+     * It is NOT a valid INT or is EMPTY, it returns FALSE.
      *
      * @param mixed|null $value
      * @param bool       $hardException
      *
      * @return bool
      *
-     * @throws InvalidArgumentException En caso que $value no sea un INT válido o esté VACÍO y que la bandera $hardException = true.
+     * @throws InvalidArgumentException In case $value is not a valid INT or is NOT EMPTY and the flag $hardException = true.
      */
     public static function checkIsIntNonEmpty(mixed $value, bool $hardException = FALSE): bool
     {
@@ -108,19 +108,19 @@ final class BasicValidator
     }
 
     /**
-     * Verifica si el valor entregado es un FLOAT válido y no VACÍO. El campo $value soporta cualquier tipo de valor.
+     * Checks if the delivered value is a FLOAT and is not EMPTY. The $value field supports any value type.
      *
-     * SI es un FLOAT válido, retorna TRUE.
-     * NO es un FLOAT válido o está VACÍO, retorna FALSE.
+     * IF it is a valid FLOAT, it returns TRUE.
+     * It is NOT a valid FLOAT or is EMPTY, it returns FALSE.
      *
      * @param mixed|null $value
      * @param bool       $hardException
      *
      * @return bool
      *
-     * @throws InvalidArgumentException En caso que $value no sea un FLOAT válido o esté VACÍO y que la bandera $hardException = true.
+     * @throws InvalidArgumentException In case $value is not a valid FLOAT or is NOT EMPTY and the flag $hardException = true.
      */
-    public static function abstractCheckIsFloatNonEmpty(mixed $value, bool $hardException = FALSE): bool
+    public static function checkIsFloatNonEmpty(mixed $value, bool $hardException = FALSE): bool
     {
         $isFloat = TRUE;
         try {
@@ -137,44 +137,5 @@ final class BasicValidator
         }
 
         return $isFloat;
-    }
-
-    /**
-     * Verifica si un String es casteable a INT. El campo $value soporta cualquier tipo de valor.
-     *
-     * SI es un STRING válido Y casteable, retorna TRUE.
-     * NO es un STRING válido O NO es casteable, retorna FALSE.
-     *
-     * @param mixed|null $value
-     * @param bool       $hardException
-     *
-     * @return bool
-     *
-     * @throws InvalidArgumentException En caso que el STRING esté vacío o sea inválido y que la bandera $hardException = true.
-     * @throws InvalidArgumentException En caso que el STRING no sea casteable a INT y que la bandera $hardException = true.
-     */
-    public static function checkIfStringCasteableToInt(mixed $value, bool $hardException = FALSE): bool
-    {
-        // Verifica si el valor no está vacía.
-        if (TRUE === self::checkIsStringNonEmpty($value)) {
-            if (TRUE === $hardException) {
-                throw new InvalidArgumentException('El valor entregado está vacío');
-            }
-
-            return FALSE;
-        }
-
-        $isCasteable = TRUE;
-        try {
-            Assert::integerish($value, sprintf('El valor [%s] no es convertible a INT', safe_json_encode($value)));
-        } catch (WebmozartException | SafeJsonException $e) {
-            if (TRUE === $hardException) {
-                throw new InvalidArgumentException($e->getMessage());
-            }
-
-            $isCasteable = FALSE;
-        }
-
-        return $isCasteable;
     }
 }
